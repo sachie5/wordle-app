@@ -1,0 +1,21 @@
+
+.wordle{
+
+    &__word{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+
+            &--letters{
+                display: flex;
+                align-items: center;
+                border: 2px solid grey;
+                padding: 25px;
+                height: 1rem;
+                width: 1rem;
+                font-size: 1.3rem;
+            }
+    }
+
+}
