@@ -3,19 +3,25 @@
 
     &__word{
             display: flex;
-            justify-content: space-around;
             align-items: center;
+
+            &--container{
+                display: flex;
+            }
 
 
             &--letters{
                 display: flex;
+                text-align: center;
                 align-items: center;
                 border: 2px solid grey;
                 padding: 25px;
-                height: 1rem;
-                width: 1rem;
+                height: 30px;
+                width: 30px;
                 font-size: 1.3rem;
+                margin: 10px;
             }
     }
 
 }
+

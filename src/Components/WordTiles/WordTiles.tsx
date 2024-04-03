@@ -1,22 +1,37 @@
 import "./WordTiles.scss";
 
 type WordTilesProps = {
-    classname: string;
-    blanks: string[];
-}
-
-const WordTiles = ({classname, blanks}: WordTilesProps) => {
-    return (
-            blanks.map((letter, index) => 
-            <div className={`${classname}`} key={index}>
-                <p className={`${classname}--letters ${classname}--first`}>{letter[0]}</p>
-                <p className={`${classname}--letters ${classname}--second`}>{letter[1]}</p>
-                <p className={`${classname}--letters ${classname}--third`}>{letter[2]}</p>
-                <p className={`${classname}--letters ${classname}--fourth`}>{letter[3]}</p>
-                <p className={`${classname}--letters ${classname}--fifth`}>{letter[4]}</p>
-           </div>)
-         )      
-    
+  classname: string;
+  guesses: string[];
 };
+
+const WordTiles = ({ classname, guesses }: WordTilesProps) => {
+  if(guesses.length > 0) {
+    return (
+    <div className={`${classname}--container`}>
+        {guesses.map((guess, i) => (
+          <div className={`${classname}--letters`} tabIndex={0}>
+          <p>{guess}</p></div>
+        ))
+        }
+         </div>
+  );
+ }
+
+return (
+    <div className={`${classname}--container`}>
+        <div className={`${classname}--letters`} tabIndex={0}>
+        </div>
+        <div className={`${classname}--letters`} >
+        </div>
+        <div className={`${classname}--letters`} >
+        </div>
+        <div className={`${classname}--letters`} >
+        </div>
+        <div className={`${classname}--letters`} >
+        </div>
+      </div>
+  );
+}
 
 export default WordTiles;
