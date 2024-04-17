@@ -3,10 +3,12 @@ import "./WordTiles.scss";
 type WordTilesProps = {
   classname: string;
   guesses: string[];
+  currentGuess: string;
 };
 
-const WordTiles = ({ classname, guesses }: WordTilesProps) => {
-  if(guesses.length > 0) {
+const WordTiles = ({ classname, guesses, currentGuess }: WordTilesProps) => {
+  const current = currentGuess.split("");
+  if(current.length > 0) {
     return (
     <div className={`${classname}--container`}>
         {guesses.map((guess, i) => (

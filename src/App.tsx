@@ -1,12 +1,13 @@
-import { RefObject,  useEffect, useRef, useState } from "react";
+import { KeyboardEvent, RefObject,  useEffect, useRef, useState } from "react";
 import WordContainer from "./Containers/WordContainer/WordContainer";
 import "./App.scss";
+import WordTiles from "./Components/WordTiles/WordTiles";
 
 
 const App = () => {
 
   const [word, setWord] = useState<string>("");
-  const [currentGuess, setCurrentGuess] = useState<string[]>([]);
+  const [currentGuess, setCurrentGuess] = useState<string>("");
   const [guesses, setGuesses] = useState<string[]>([]);
   let index = guesses.length;
 
@@ -23,13 +24,12 @@ const App = () => {
     console.log(currentGuess);
     if(letter === "Backspace"){
       setCurrentGuess((prevGuess) => {
-        const updatedGuess = prevGuess.slice(0, -1);
+        const updatedGuess = prevGuess.split("").slice(0, -1).join();
         return updatedGuess;});
     } else if(letter.match(/[A-Za-z]/)){
         if(currentGuess.length < 5){
-          const localGuess  = [...currentGuess];
-          localGuess.push(letter);
-          setCurrentGuess(localGuess)
+          const localGuess  = currentGuess + letter;
+         /*  setCurrentGuess(localGuess); */
         }
   } else if (letter === "Enter"){
         compareAnswer();
@@ -47,10 +47,10 @@ const App = () => {
     if (ref.current) {
       ref.current.focus();
   }
-}, [])
+}, [currentGuess])
 
   const compareAnswer = () => {
-    const current = currentGuess.join("");
+    const current = currentGuess;
     if(current === word){
       alert("You have won!")
     } else {
@@ -62,7 +62,7 @@ const App = () => {
   return (
     <>
     <main>
-    <WordContainer classname={"wordle"} guesses={guesses} currentGuess={currentGuess} onKeyboardPress={onKeyboardPress} ref={ref} />
+  <WordContainer classname={"wordle"} guesses={guesses} currentGuess={currentGuess} onKeyboardPress={onKeyboardPress} ref={ref}   />
     </main>
     </>
   )
