@@ -7,25 +7,16 @@ type WordContainerProps = {
   guesses: string[];
   currentGuess: string;
   onKeyboardPress: KeyboardEventHandler<HTMLDivElement>;
-  ref: React.RefObject<HTMLDivElement>;
+  turn: number;
 };
 
 const WordContainer = 
-  ({ classname, guesses, currentGuess, onKeyboardPress, ref }: WordContainerProps) => {
-    const current = currentGuess.split("")
+  ({ classname, guesses, currentGuess, onKeyboardPress, turn }: WordContainerProps) => {
   return (
-    <section className={`${classname}__container`} onKeyDown={onKeyboardPress} ref={ref}>
-      {guesses.length > 0 ? (
-        guesses.map((guess, i) => (
-        <WordTiles classname={`${classname}__word`} key={i} guesses={guesses} currentGuess={currentGuess}  />
-      ))
-      ) : (
-        Array.from({ length: 6 }, (_, i) => (
-          <WordTiles classname={`${classname}__word`} key={i} guesses={guesses} currentGuess={currentGuess}   />
-        )
-      )
-      )
-        }
+    <section className={`${classname}__container`} onKeyDown={onKeyboardPress}>
+      {guesses.map((guess, index) => (
+        <WordTiles key={index} classname={classname} guesses={guesses} currentGuess={currentGuess} />
+      ))}
     </section>
   );
  }
