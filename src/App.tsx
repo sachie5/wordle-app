@@ -6,7 +6,7 @@ import WordTiles from "./Components/WordTiles/WordTiles";
 const App = () => {
   const [word, setWord] = useState<string>("");
   const [currentGuess, setCurrentGuess] = useState<string>("");
-  const [guesses, setGuesses] = useState<string[]>([]);
+  const [guesses, setGuesses] = useState<string[]>([...Array(6)]);
   const [turn, setTurn] = useState<number>(0);
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   let index = guesses.length;

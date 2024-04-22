@@ -7,7 +7,22 @@ type WordTilesProps = {
 };
 
 const WordTiles = ({ classname, guesses, currentGuess }: WordTilesProps) => {
-return (
+  {guesses.map((guess) => {
+    if(guess){
+      const guessLetters = guess.split("");
+      return (        
+      <div className={`${classname}--container`}>
+       {guessLetters.map((letter, index) => (
+        <div key={index }className={`${classname}--letters`} >
+          {letter}
+        </div>
+      ))}      
+       </div>
+      )
+    }
+  }   
+  )}
+  return (
     <div className={`${classname}--container`}>
         <div className={`${classname}--letters`} >
         </div>
@@ -21,6 +36,8 @@ return (
         </div>
       </div>
   );
-}
+    }
+
+
 
 export default WordTiles;
