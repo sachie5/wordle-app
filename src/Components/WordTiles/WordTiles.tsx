@@ -7,36 +7,25 @@ type WordTilesProps = {
 };
 
 const WordTiles = ({ classname, guesses, currentGuess }: WordTilesProps) => {
-  {guesses.map((guess) => {
-    if(guess){
-      const guessLetters = guess.split("");
-      return (        
+  return(
+    guesses.map((guess, index) => (
       <div className={`${classname}--container`}>
-       {guessLetters.map((letter, index) => (
-        <div key={index }className={`${classname}--letters`} >
-          {letter}
-        </div>
-      ))}      
-       </div>
-      )
-    }
-  }   
-  )}
-  return (
-    <div className={`${classname}--container`}>
-        <div className={`${classname}--letters`} >
-        </div>
-        <div className={`${classname}--letters`} >
-        </div>
-        <div className={`${classname}--letters`} >
-        </div>
-        <div className={`${classname}--letters`} >
-        </div>
-        <div className={`${classname}--letters`} >
-        </div>
+        {guess && guess.split("").map((letter, letterIndex) => (
+              <div key={letterIndex }className={`${classname}--letters`} >
+              {letter}
+              </div>
+  ))} : {!guess &&
+    <><div className={`${classname}--letters`}>
+          </div><div className={`${classname}--letters`}>
+            </div><div className={`${classname}--letters`}>
+            </div><div className={`${classname}--letters`}>
+            </div><div className={`${classname}--letters`}>
+            </div></>
+  }
       </div>
-  );
-    }
+  ))
+  )
+  }   
 
 
 
