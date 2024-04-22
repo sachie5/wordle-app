@@ -45,7 +45,15 @@ const App = () => {
         return updatedGuess;
       });
     } else if (pressedKey === "Enter") {
-      compareAnswer();
+      if(currentGuess.length === 5){
+        guesses[turn] = currentGuess;
+        console.log(guesses)
+        compareAnswer();
+        setTurn(turn + 1);
+        setCurrentGuess("");
+        
+      }
+
     }
   };
 
