@@ -9,6 +9,7 @@ const App = () => {
   const [guesses, setGuesses] = useState<string[]>([...Array(6)]);
   const [turn, setTurn] = useState<number>(0);
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
+  const [backgroundColor, setBackgroundColor] = useState<string>("");
   let index = guesses.length;
 
   const getWord = async () => {
@@ -61,14 +62,17 @@ const App = () => {
   const compareAnswer = () => {
     const current = [...currentGuess];
     const solution = [...word];
-    
+    console.log(solution);
+    console.log(current);    
     current.forEach((letter, i) => {
-      if(current[i] === solution[i]){
-
-      } else if (solution.includes(current[i])){
-
+      if(letter === solution[i]){
+/*           console.log(letter);
+          console.log(solution[i])
+          setBackgroundColor("green"); */
+      } else if (solution.includes(letter)){
+/*         setBackgroundColor("yellow"); */
       } else {
-
+        return;
       }
     })
     
@@ -86,7 +90,7 @@ const App = () => {
       <main>
         <p>Solution: {word}</p>
         <p onKeyUp={onKeyboardPress}>Current guess: {currentGuess}</p>
-         <WordContainer classname={"wordle"} guesses={guesses} currentGuess={currentGuess} onKeyboardPress={onKeyboardPress} turn={turn}  />
+         <WordContainer classname={"wordle"} guesses={guesses} currentGuess={currentGuess} onKeyboardPress={onKeyboardPress} turn={turn} backgroundColor={backgroundColor}  />
       </main>
     </>
   );
