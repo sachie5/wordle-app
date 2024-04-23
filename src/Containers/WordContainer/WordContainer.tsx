@@ -14,7 +14,7 @@ const WordContainer =
   ({ classname, guesses, currentGuess, onKeyboardPress, turn }: WordContainerProps) => {
   return (
     <section className={`${classname}__container`} onKeyDown={onKeyboardPress}>
-        <WordTiles  classname={classname} guesses={guesses} currentGuess={currentGuess} /> 
+        <WordTiles classname={classname} guesses={guesses} currentGuess={currentGuess} /> 
     </section>
   );
  }

@@ -15,7 +15,7 @@ const App = () => {
     const url = `https://random-word-api.herokuapp.com/word?length=5`;
     const response = await fetch(url);
     const randomWord = await response.json();
-    setWord(randomWord[0]);
+    setWord(randomWord[0].toUpperCase());
   };
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const App = () => {
     if (/^[A-Za-z]$/.test(pressedKey)) {
       if (currentGuess.length < 5) {
         setCurrentGuess((prev) => {
-          return prev + pressedKey;
+          return prev + pressedKey.toUpperCase();
         });
       }
     } else if (pressedKey === "Backspace") {
@@ -51,6 +51,7 @@ const App = () => {
         compareAnswer();
         setTurn(turn + 1);
         setCurrentGuess("");
+        console.log(turn)
         
       }
 
